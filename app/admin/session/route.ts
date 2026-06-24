@@ -3,7 +3,7 @@ import { getSession, updateSession, resetVotes } from '@/lib/db';
 
 function isAdmin(req: NextRequest) {
   const cookie = req.headers.get('cookie') || '';
-  return cookie.split(';').some(c => c.trim() === 'drivenode_admin=1');
+  return cookie.split(';').some(c => c.trim().startsWith('drivenode_admin=1'));
 }
 
 export async function GET(req: NextRequest) {
